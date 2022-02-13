@@ -6,13 +6,20 @@ export default function CounterTab({dataRecover}) {
   const [data, setData] = useState("")
 
   useEffect(() => {
-      let promises = Promise.all(dataRecover.actions)
-      promises.then(res => {
+      let isSubscribed = true
+      let allPromises = dataRecover.actions.map(action => action())
+      Promise.all(allPromises)
+      .then(res => {
         let newData = res.map(element => element.data.values)
-        setData(newData.join('/'))
+        isSubscribed && setData(newData.join('/'))
       }) 
-      promises.catch(()=> setData('Algunes dades no s\'han pogut obtenir'))
+      .catch(() => {
+        setData('Algunes dades no s\'han pogut obtenir')
+      })
+    
+      return () => isSubscribed = false
   })
+ 
 
   return (
     <CounterTabData data={{title:dataRecover.keys.join('/'),values:data}}/>

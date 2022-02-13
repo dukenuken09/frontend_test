@@ -17,7 +17,7 @@ export default function Counter({tabs}) {
     <Box>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <TabList onChange={handleChange} aria-label="lab API tabs example">
+          <TabList id='tab_list' onChange={handleChange} aria-label="lab API tabs example">
             {tabs.map((tab,index) => <Tab label={tab.title} key={index} value={tab.title}/>)}
           </TabList>
         </Box>

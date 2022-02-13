@@ -8,14 +8,14 @@ const tabs = [{
   title:'Entitats',
   functions:{
     keys:['contractes','membres'],
-    actions: [contractApi.getEntityContracts(),memberApi.getEntityMembers()]
+    actions: [contractApi.getEntityContracts,memberApi.getEntityMembers]
   },
 },
 {
   title:'Entitats Privades',
   functions:{
     keys:['contractes','membres'],
-    actions:[contractApi.getPublicContracts(),memberApi.getPublicMembers()]
+    actions:[contractApi.getPublicContracts,memberApi.getPublicMembers]
   },
 }]
 
